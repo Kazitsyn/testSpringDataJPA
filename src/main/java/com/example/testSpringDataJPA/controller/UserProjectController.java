@@ -1,5 +1,7 @@
 package com.example.testSpringDataJPA.controller;
 
+import com.example.testSpringDataJPA.model.Project;
+import com.example.testSpringDataJPA.model.User;
 import com.example.testSpringDataJPA.model.UsersProject;
 import com.example.testSpringDataJPA.service.UserProjectService;
 import lombok.AllArgsConstructor;
@@ -68,5 +70,27 @@ public class UserProjectController {
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("UsersProject not found");
         }
+    }
+    @PostMapping("/adduser")
+    public ResponseEntity addUser(@RequestBody User user){
+        userProjectService.addUser(user);
+        return ResponseEntity.ok("User add");
+    }
+
+    @PostMapping("/addproject")
+    public ResponseEntity addProject(@RequestBody Project project){
+        userProjectService.addProject(project);
+        return ResponseEntity.ok("project add");
+    }
+
+    @GetMapping("/users")
+    public ResponseEntity findAllUsers(){
+        List<User> users = userProjectService.findAllUsers();
+        return ResponseEntity.ok(users);
+    }
+    @GetMapping("/projects")
+    public ResponseEntity findAllProject(){
+        List<Project> projects = userProjectService.findAllProject();
+        return ResponseEntity.ok(projects);
     }
 }
