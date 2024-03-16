@@ -14,6 +14,6 @@ public class UserActionAspect {
         String methodName = joinPoint.getSignature().getName();
         Object[] args = joinPoint.getArgs();
         String user = "localhost"; // логика определения пользователя
-        System.out.println("User: " + user + " Action: " + methodName + " Args: " + args);
+        System.out.println("User: " + user + " Action: " + methodName + " Args: " + args.toString());
     }
 }
